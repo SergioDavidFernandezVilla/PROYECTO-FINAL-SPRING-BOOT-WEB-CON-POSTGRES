@@ -3,8 +3,6 @@ package com.example.demo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.models.Anuncio;
 import com.example.demo.services.ServicesAnuncio;
@@ -25,17 +23,10 @@ public class ControllerHtml {
     }
 
     // Mostrar el formulario
-    @GetMapping("/anuncio")
+    @GetMapping("/anuncio/crear-anuncio")
     public String mostrarFormulario(Model model) {
         model.addAttribute("anuncio", new Anuncio()); // Crear un objeto vacío para el formulario
         return "new-anuncio"; // Nombre del template HTML
-    }
-
-    // Manejar el envío del formulario
-    @PostMapping("/anuncio")
-    public String crearAnuncio(@ModelAttribute Anuncio anuncio) {
-        servicesAnuncio.CreateAnuncio(anuncio); // Guardar el anuncio en la base de datos
-        return "redirect:/"; // Redirigir a la página de inicio después de guardar
     }
 
     @GetMapping("/insert")
