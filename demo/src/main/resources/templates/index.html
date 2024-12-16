@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+</head>
+<body>
+    <main>
+        <h2>Tablón de anuncios</h2>
+        <p th:text="${mensaje}">Bienvenidos</p>
+
+        <!-- Listar anuncios -->
+        <ul>
+            <li th:each="anuncio : ${anuncios}">
+                <a th:href="@{'/anuncio/' + ${anuncio.id}}" th:text="${anuncio.nombre}"></a>
+            </li>
+        </ul>
+
+        <!-- Enlace para crear nuevo anuncio -->
+        <a th:href="@{/anuncio}">Crear nuevo anuncio</a>
+    </main>
+</body>
+</html>

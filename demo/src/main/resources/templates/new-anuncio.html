@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear anuncio</title>
+</head>
+<body>
+    <main>
+        <h2>Crear nuevo anuncio</h2>
+
+        <div>
+            <!-- Enlace del formulario con Spring -->
+            <form th:action="@{/anuncio}" th:method="post" th:object="${anuncio}">
+                <input type="text" th:field="*{nombre}" id="nombre" placeholder="Ingrese título del anuncio...">
+                <input type="text" th:field="*{asunto}" id="asunto" placeholder="Ingrese asunto del anuncio...">
+                <input type="text" th:field="*{descripcion}" id="descripcion" placeholder="Ingrese descripción del anuncio...">
+
+                <button type="submit">Crear anuncio</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
