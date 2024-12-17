@@ -12,7 +12,7 @@
 
         <!-- Listar anuncios -->
         <ul>
-            <li th:each="anuncio : ${anuncio}">
+            <li th:each="anuncio : ${anuncios}">
                 <a th:href="@{'/anuncio/' + ${anuncio.id}}" th:text="${anuncio.nombre}"></a>
             </li>
         </ul>
