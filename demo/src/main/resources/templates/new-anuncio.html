@@ -1,29 +1,24 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear anuncio</title>
+    <title>Crear Nuevo Anuncio</title>
 </head>
 <body>
-    <main>
-        <h2>Crear nuevo anuncio</h2>
+    <h1>Crear Nuevo Anuncio</h1>
+    <form th:action="@{/crear-nuevo-anuncio}" th:object="${anuncio}" method="post">
+        <!-- Campo de texto -->
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" th:field="*{titulo}" required />
+        <br/>
 
-        <div>
-            <!-- Formulario para enviar datos al controlador -->
-            <form th:action="@{/anuncio}" th:method="post" th:object="${anuncio}">
-                <label for="nombre">Nombre del anuncio:</label>
-                <input type="text" th:field="*{nombre}" id="nombre" placeholder="Ingrese título del anuncio..." required>
+        <!-- Campo de descripción -->
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" th:field="*{descripcion}" required></textarea>
+        <br/>
 
-                <label for="asunto">Asunto:</label>
-                <input type="text" th:field="*{asunto}" id="asunto" placeholder="Ingrese asunto del anuncio..." required>
-
-                <label for="descripcion">Descripción:</label>
-                <textarea th:field="*{descripcion}" id="descripcion" placeholder="Ingrese descripción del anuncio..." required></textarea>
-
-                <button type="submit">Crear anuncio</button>
-            </form>
-        </div>
-    </main>
+        <!-- Botón de envío -->
+        <button type="submit">Guardar</button>
+    </form>
 </body>
 </html>

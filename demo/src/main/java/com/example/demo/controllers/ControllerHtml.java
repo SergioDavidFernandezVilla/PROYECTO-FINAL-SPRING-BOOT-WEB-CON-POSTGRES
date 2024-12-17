@@ -22,16 +22,16 @@ public class ControllerHtml {
         return "index";
     }
 
-    @GetMapping("/formulario-anuncio")
+    @GetMapping("/crear-nuevo-anuncio")
     public String showForm(Model model) {
         model.addAttribute("anuncio", new Anuncio());
         return "new-anuncio"; // Nombre de tu archivo HTML
     }
 
-    @PostMapping
-    public String createAnuncio(@ModelAttribute Anuncio anuncio){
-        servicesAnuncio.CreateAnuncio(anuncio);
-        return "redirect:/anuncio"; // Redirige a la lista de anuncios
+    @PostMapping("/crear-nuevo-anuncio")
+    public String createAnuncio(@ModelAttribute("anuncio") Anuncio anuncio) {
+        servicesAnuncio.CreateAnuncio(anuncio); // Guarda los datos
+        return "redirect:/insert"; // Redirige a una página de éxito
     }
 
 
