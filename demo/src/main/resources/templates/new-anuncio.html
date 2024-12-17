@@ -11,7 +11,7 @@
 
         <div>
             <!-- Formulario para enviar datos al controlador -->
-            <form th:action="@{/anuncios}" th:method="post" th:object="${anuncio}">
+            <form th:action="@{/anuncio}" th:method="post" th:object="${anuncio}">
                 <label for="nombre">Nombre del anuncio:</label>
                 <input type="text" th:field="*{nombre}" id="nombre" placeholder="Ingrese título del anuncio..." required>
 
