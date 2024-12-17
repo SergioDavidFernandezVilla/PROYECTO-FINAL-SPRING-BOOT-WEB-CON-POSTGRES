@@ -10,11 +10,16 @@
         <h2>Crear nuevo anuncio</h2>
 
         <div>
-            <!-- Enlace del formulario con Spring -->
-            <form th:action="@{/anuncio}" th:method="post" th:object="${anuncio}">
-                <input type="text" th:field="*{nombre}" id="nombre" placeholder="Ingrese título del anuncio...">
-                <input type="text" th:field="*{asunto}" id="asunto" placeholder="Ingrese asunto del anuncio...">
-                <input type="text" th:field="*{descripcion}" id="descripcion" placeholder="Ingrese descripción del anuncio...">
+            <!-- Formulario para enviar datos al controlador -->
+            <form th:action="@{/anuncios}" th:method="post" th:object="${anuncio}">
+                <label for="nombre">Nombre del anuncio:</label>
+                <input type="text" th:field="*{nombre}" id="nombre" placeholder="Ingrese título del anuncio..." required>
+
+                <label for="asunto">Asunto:</label>
+                <input type="text" th:field="*{asunto}" id="asunto" placeholder="Ingrese asunto del anuncio..." required>
+
+                <label for="descripcion">Descripción:</label>
+                <textarea th:field="*{descripcion}" id="descripcion" placeholder="Ingrese descripción del anuncio..." required></textarea>
 
                 <button type="submit">Crear anuncio</button>
             </form>
