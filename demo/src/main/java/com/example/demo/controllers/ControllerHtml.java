@@ -17,6 +17,11 @@ public class ControllerHtml {
     @Autowired
     private ServicesAnuncio servicesAnuncio;
 
+    @GetMapping("/")
+    public String welcomePage(Model model){
+        return "index";
+    }
+
     @GetMapping("/formulario-anuncio")
     public String showForm(Model model) {
         model.addAttribute("anuncio", new Anuncio());
@@ -26,7 +31,7 @@ public class ControllerHtml {
     @PostMapping
     public String createAnuncio(@ModelAttribute Anuncio anuncio){
         servicesAnuncio.CreateAnuncio(anuncio);
-        return "redirect:/anuncios"; // Redirige a la lista de anuncios
+        return "redirect:/anuncio"; // Redirige a la lista de anuncios
     }
 
 
