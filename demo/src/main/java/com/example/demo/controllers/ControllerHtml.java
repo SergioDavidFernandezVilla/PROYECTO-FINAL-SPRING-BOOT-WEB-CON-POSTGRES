@@ -20,6 +20,8 @@ public class ControllerHtml {
     
     @Autowired
     private ServicesAnuncio servicesAnuncio;
+
+    @Autowired
     private RepositoryAnuncio anuncioRepository;
 
     @GetMapping("/")
