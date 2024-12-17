@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Crear Nuevo Anuncio</h1>
-    <form th:action="@{/crear-nuevo-anuncio}" th:object="${anuncio}" method="post">
+    <form th:action="@{/new}" th:object="${anuncio}" method="post">
         <label for="titulo">Título:</label>
         <input type="text" id="titulo" th:field="*{titulo}" required />
         <br/>

@@ -22,13 +22,13 @@ public class ControllerHtml {
         return "index";
     }
 
-    @GetMapping("/crear-nuevo-anuncio")
+    @GetMapping("/new")
     public String showForm(Model model) {
         model.addAttribute("anuncio", new Anuncio());
         return "nuevo-anuncio"; // Nombre de tu archivo HTML
     }
 
-    @PostMapping("/crear-nuevo-anuncio")
+    @PostMapping("/new")
     public String createAnuncio(@ModelAttribute("anuncio") Anuncio anuncio) {
         servicesAnuncio.CreateAnuncio(anuncio); // Guarda los datos
         return "redirect:/insert"; // Redirige a una página de éxito
