@@ -25,7 +25,7 @@ public class ControllerHtml {
     @GetMapping("/crear-nuevo-anuncio")
     public String showForm(Model model) {
         model.addAttribute("anuncio", new Anuncio());
-        return "new-anuncio"; // Nombre de tu archivo HTML
+        return "nuevo-anuncio"; // Nombre de tu archivo HTML
     }
 
     @PostMapping("/crear-nuevo-anuncio")
