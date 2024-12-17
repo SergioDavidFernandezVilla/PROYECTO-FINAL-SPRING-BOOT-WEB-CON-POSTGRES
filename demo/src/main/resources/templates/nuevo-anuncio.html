@@ -2,22 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Crear Nuevo Anuncio</title>
+    <title>Nuevo Anuncio</title>
 </head>
 <body>
     <h1>Crear Nuevo Anuncio</h1>
     <form th:action="@{/crear-nuevo-anuncio}" th:object="${anuncio}" method="post">
-        <!-- Campo de texto -->
         <label for="titulo">Título:</label>
         <input type="text" id="titulo" th:field="*{titulo}" required />
         <br/>
 
-        <!-- Campo de descripción -->
         <label for="descripcion">Descripción:</label>
         <textarea id="descripcion" th:field="*{descripcion}" required></textarea>
         <br/>
 
-        <!-- Botón de envío -->
         <button type="submit">Guardar</button>
     </form>
 </body>
