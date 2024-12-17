@@ -7,8 +7,12 @@
 <body>
     <h1>Crear Nuevo Anuncio</h1>
     <form th:action="@{/new}" th:object="${anuncio}" method="post">
-        <label for="titulo">Título:</label>
-        <input type="text" id="titulo" th:field="*{titulo}" required />
+        <label for="nombre">nombre:</label>
+        <input type="text" id="nombre" th:field="*{nombre}" required />
+        <br/>
+
+        <label for="asunto">asunto:</label>
+        <input type="text" id="asunto" th:field="*{asunto}" required />
         <br/>
 
         <label for="descripcion">Descripción:</label>
