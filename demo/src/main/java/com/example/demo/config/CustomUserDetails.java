@@ -1,16 +1,15 @@
 package com.example.demo.config;
 
-import java.util.Collection;
-import java.util.List;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.demo.models.User;
 
+import java.util.Collection;
+import java.util.Collections;
 
-// Clase interna o separada que implementa UserDetails
 public class CustomUserDetails implements UserDetails {
+
     private final User user;
 
     public CustomUserDetails(User user) {
@@ -19,7 +18,8 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(); // Devuelve los roles o permisos si los tienes definidos en tu entidad User
+        // Aquí puedes agregar roles o permisos, por ahora lo dejo vacío.
+        return Collections.singletonList(() -> user.getRole().name());
     }
 
     @Override
@@ -34,21 +34,21 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true; // Ajusta según tu lógica
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true; // Ajusta según tu lógica
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true; // Ajusta según tu lógica
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return true; // Ajusta según tu lógica
+        return true;
     }
 }
