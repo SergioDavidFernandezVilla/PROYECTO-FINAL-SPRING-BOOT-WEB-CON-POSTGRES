@@ -44,12 +44,12 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return nombre -> {
-            Optional<User> user = repositoryUser.findByUsername(nombre);
+        return username -> {
+            Optional<User> user = repositoryUser.findByUsername(username);
             if (user.isPresent()) {
                 return new CustomUserDetails(user.get());
             } else {
-                throw new UsernameNotFoundException("Usuario no encontrado: " + nombre);
+                throw new UsernameNotFoundException("Usuario no encontrado: " + username);
             }
         };
     }
