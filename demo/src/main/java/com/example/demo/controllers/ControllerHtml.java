@@ -1,5 +1,8 @@
 package com.example.demo.controllers;
 
+import java.util.List;
+
+import org.aspectj.apache.bcel.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.models.Anuncio;
+import com.example.demo.repository.RepositoryAnuncio;
 import com.example.demo.services.ServicesAnuncio;
 
 import org.springframework.ui.Model;
@@ -16,9 +20,13 @@ public class ControllerHtml {
     
     @Autowired
     private ServicesAnuncio servicesAnuncio;
+    private RepositoryAnuncio anuncioRepository;
 
     @GetMapping("/")
     public String welcomePage(Model model){
+        List<Anuncio> anuncios = anuncioRepository.findAll();
+        model.addAttribute("anuncios", anuncios); // Atributo correcto
+        model.addAttribute("mensaje", "Bienvenidos al tablón de anuncios");
         return "index";
     }
 
