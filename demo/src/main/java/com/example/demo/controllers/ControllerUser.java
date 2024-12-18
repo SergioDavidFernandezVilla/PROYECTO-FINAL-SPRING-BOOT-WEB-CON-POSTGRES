@@ -49,10 +49,4 @@ public class ControllerUser {
         return servicesUser.GetUserById(id);
     }
 
-    // METODO GET POR EMAIL
-    @GetMapping("/get/email")
-    public UserEntity GetUserByEmail(@RequestBody String email){
-        return servicesUser.GetUserByEmail(email);
-    }
-
 }

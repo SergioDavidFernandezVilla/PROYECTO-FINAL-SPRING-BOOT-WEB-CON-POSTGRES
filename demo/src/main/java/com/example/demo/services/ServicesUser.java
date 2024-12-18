@@ -46,9 +46,4 @@ public class ServicesUser {
         return repositoryUser.findById(id).get();
     }
 
-    // METODO GET POR EMAIL
-    public UserEntity GetUserByEmail(String email){
-        return repositoryUser.findByEmail(email);
-    }
-
 }
