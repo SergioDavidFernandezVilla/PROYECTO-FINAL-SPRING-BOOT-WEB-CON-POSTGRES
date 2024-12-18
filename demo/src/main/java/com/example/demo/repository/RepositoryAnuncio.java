@@ -6,5 +6,5 @@ import com.example.demo.models.Anuncio;
 
 public interface RepositoryAnuncio extends JpaRepository<Anuncio, Long> {
 
-
+    
 }

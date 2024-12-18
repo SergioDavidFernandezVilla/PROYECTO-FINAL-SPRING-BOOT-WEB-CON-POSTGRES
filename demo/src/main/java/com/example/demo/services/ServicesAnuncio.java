@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,8 +44,12 @@ public class ServicesAnuncio {
    }
 
    // METODO GET POR ID
-   public Anuncio GetAnuncioById(Long id){
-        return repositoryAnuncio.findById(id).get();
-   }
+   public Anuncio GetAnuncioById(Long id) {
+     // Buscar el anuncio en la base de datos
+     Optional<Anuncio> anuncioOptional = repositoryAnuncio.findById(id);
+
+     // Si no se encuentra, lanzamos una excepción
+     return anuncioOptional.orElseThrow();
+ }
 
 }
