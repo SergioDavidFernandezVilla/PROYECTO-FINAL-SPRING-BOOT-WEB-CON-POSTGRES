@@ -61,7 +61,7 @@ public class SecurityConfig {
                     http.requestMatchers(HttpMethod.GET, "/anuncio").hasAnyRole("ADMIN", "DEVELOPER", "USER");
                     http.requestMatchers(HttpMethod.POST, "/anuncio").hasAnyRole("ADMIN", "DEVELOPER");
 
-                    http.requestMatchers(HttpMethod.GET, "/anuncio/{id}").hasAnyRole("ADMIN", "DEVELOPER", "USER");
+                    
                     http.requestMatchers(HttpMethod.GET, "/new").hasAnyRole("ADMIN", "DEVELOPER", "USER");
 
                     http.requestMatchers(HttpMethod.POST, "/new").hasAnyRole("ADMIN", "DEVELOPER");
