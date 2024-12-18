@@ -61,8 +61,8 @@ public class SecurityConfig {
 
                     
                     // RUTA CREAR ANUNCIO
-                    http.requestMatchers(HttpMethod.GET, "/new").hasAnyRole("ADMIN", "DEVELOPER");
-                    http.requestMatchers(HttpMethod.POST, "/new").hasAnyRole("ADMIN", "DEVELOPER");
+                    http.requestMatchers(HttpMethod.GET, "/new").hasAnyAuthority("ADMIN", "USER");
+                    http.requestMatchers(HttpMethod.POST, "/new").hasAnyAuthority("ADMIN", "USER");
                     
 
                     // RUTA INICIO
