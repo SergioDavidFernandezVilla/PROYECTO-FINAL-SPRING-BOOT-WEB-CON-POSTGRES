@@ -61,10 +61,13 @@ public class SecurityConfig {
                     http.requestMatchers(HttpMethod.GET, "/anuncio").hasAnyRole("ADMIN", "DEVELOPER", "USER");
                     http.requestMatchers(HttpMethod.POST, "/anuncio").hasAnyRole("ADMIN", "DEVELOPER");
 
+                    http.requestMatchers(HttpMethod.GET, "/anuncio/{id}").hasAnyRole("ADMIN", "DEVELOPER", "USER");
                     http.requestMatchers(HttpMethod.GET, "/new").hasAnyRole("ADMIN", "DEVELOPER", "USER");
-                    http.requestMatchers(HttpMethod.POST, "/new").hasAnyRole("ADMIN", "DEVELOPER");
 
+                    http.requestMatchers(HttpMethod.POST, "/new").hasAnyRole("ADMIN", "DEVELOPER");
                     http.requestMatchers(HttpMethod.GET, "/insert").hasAnyRole("ADMIN", "DEVELOPER", "USER");
+
+                    // FIN RUTA ANUNCIO
 
                     // RUTA COMPROBAR ALGUNAS IDEAS...
                     http.requestMatchers(HttpMethod.POST, "/auth/post").hasAnyRole("ADMIN", "DEVELOPER");
