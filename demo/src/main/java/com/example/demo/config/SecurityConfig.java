@@ -56,9 +56,6 @@ public class SecurityConfig {
 
                 
                     // RUTA CRUD USER
-                    http.requestMatchers(HttpMethod.POST, "/user").hasAnyRole("ADMIN", "DEVELOPER");
-                    http.requestMatchers(HttpMethod.GET, "/user").hasAnyRole("ADMIN", "DEVELOPER");
-
                     
                     // RUTA CREAR ANUNCIO
                     http.requestMatchers(HttpMethod.GET, "/new").hasAnyAuthority("ADMIN", "USER");
