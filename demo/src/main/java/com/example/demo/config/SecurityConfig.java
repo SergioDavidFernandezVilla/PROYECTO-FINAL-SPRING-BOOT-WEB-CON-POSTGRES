@@ -63,7 +63,7 @@ public class SecurityConfig {
 
                      // CONFIGURAR EL RESTO ENDPOINTS POR DEFECTO
                     http.anyRequest().denyAll();
-                })
+                }).formLogin(Customizer.withDefaults())
                 .build();
     }
 
