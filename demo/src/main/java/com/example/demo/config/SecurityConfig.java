@@ -75,7 +75,7 @@ public class SecurityConfig {
                     http.requestMatchers("/auth").permitAll();
 
                      // CONFIGURAR EL RESTO ENDPOINTS POR DEFECTO
-                    
+                    http.anyRequest().denyAll();
                 }).formLogin(Customizer.withDefaults())
                 .build();
     }
