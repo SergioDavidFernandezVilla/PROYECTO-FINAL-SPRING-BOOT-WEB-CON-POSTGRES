@@ -33,7 +33,7 @@ public class SecurityConfig {
     AuthenticationConfiguration authenticationConfiguration;
     
     // METODO SECURITY FILTER CHAIN
-    @Bean
+    /*@Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         return httpSecurity
         .csrf(csrf -> csrf.disable())
@@ -51,7 +51,16 @@ public class SecurityConfig {
             http.anyRequest().denyAll();
         })
         .build();
-    } 
+    } */
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity
+                .csrf(csrf -> csrf.disable())
+                .httpBasic(Customizer.withDefaults())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .build();
+    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
