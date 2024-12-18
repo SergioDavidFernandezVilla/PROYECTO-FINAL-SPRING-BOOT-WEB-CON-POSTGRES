@@ -59,6 +59,11 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(http -> {
+
+                     // CONFIGURAR EL RESTO ENDPOINTS POR DEFECTO
+                    http.anyRequest().denyAll();
+                })
                 .build();
     }
 
