@@ -1,8 +1,5 @@
 package com.example.demo.config;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,12 +13,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
@@ -61,13 +54,24 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
 
-                    http.requestMatchers("/auth").permitAll();
-
+                
+                    // RUTA CRUD USER
                     http.requestMatchers(HttpMethod.POST, "/user").hasAnyRole("ADMIN", "DEVELOPER");
                     http.requestMatchers(HttpMethod.GET, "/user").hasAnyRole("ADMIN", "DEVELOPER");
+
+                    /* 
+                    // RUTA CREAR ANUNCIO
+                    http.requestMatchers(HttpMethod.GET, "/new").hasAnyRole("ADMIN", "DEVELOPER");
+                    http.requestMatchers(HttpMethod.POST, "/new").hasAnyRole("ADMIN", "DEVELOPER");
+                    */
+
+                    // RUTA INICIO
                     http.requestMatchers(HttpMethod.GET, "/").hasAnyRole("ADMIN", "DEVELOPER", "USER");
+
+                    // RUTA COMPROBAR ALGUNAS IDEAS...
                     http.requestMatchers(HttpMethod.POST, "/auth/post").hasAnyRole("ADMIN", "DEVELOPER");
                     http.requestMatchers(HttpMethod.PATCH, "/auth/patch").hasAnyAuthority("REFACTOR");
+                    http.requestMatchers("/auth").permitAll();
 
                      // CONFIGURAR EL RESTO ENDPOINTS POR DEFECTO
                     http.anyRequest().denyAll();

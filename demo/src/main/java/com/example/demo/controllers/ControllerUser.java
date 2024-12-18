@@ -21,7 +21,7 @@ public class ControllerUser {
     private ServicesUser servicesUser;
 
     // METODO CREATE
-    @PreAuthorize("hasAuthority('CREATE')")
+    @PreAuthorize("permitAll()")
     @PostMapping("/create")
     public UserEntity CreateUser(@RequestBody UserEntity user){
         return servicesUser.CreateUser(user);
