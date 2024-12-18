@@ -6,6 +6,7 @@ import java.util.Set;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import com.example.demo.models.PermissionEntity;
 import com.example.demo.models.RoleEntity;
@@ -20,75 +21,93 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	CommandLineRunner init(RepositoryUser repositoryUser){
-		return args -> {
-			/* CREATE PERMISSIONS */
-			PermissionEntity createPermission = PermissionEntity.builder()
-			.name("CREATE")
-			.build();
+	@Bean
+    CommandLineRunner init(RepositoryUser repositoryUser) {
+        return args -> {
+            /* Create PERMISSIONS */
+            PermissionEntity createPermission = PermissionEntity.builder()
+                    .name("CREATE")
+                    .build();
 
-			PermissionEntity readPermission = PermissionEntity.builder()
-			.name("READ")
-			.build();
+            PermissionEntity readPermission = PermissionEntity.builder()
+                    .name("READ")
+                    .build();
 
-			PermissionEntity updatePermission = PermissionEntity.builder()
-			.name("UPDATE")
-			.build();
+            PermissionEntity updatePermission = PermissionEntity.builder()
+                    .name("UPDATE")
+                    .build();
 
-			PermissionEntity refactorPermission = PermissionEntity.builder()
-			.name("REFACTOR")
-			.build();
+            PermissionEntity deletePermission = PermissionEntity.builder()
+                    .name("DELETE")
+                    .build();
 
-			/* CREATE ROLES */
-			RoleEntity roleAdmin = RoleEntity.builder()
-			.roleEnum(RoleEnum.ADMIN)
-			.permissionList(Set.of(createPermission, readPermission, updatePermission, refactorPermission))
-			.build();
+            PermissionEntity refactorPermission = PermissionEntity.builder()
+                    .name("REFACTOR")
+                    .build();
 
-			RoleEntity roleUser = RoleEntity.builder()
-			.roleEnum(RoleEnum.USER)
-			.permissionList(Set.of(readPermission, createPermission))
-			.build();
+            /* Create ROLES */
+            RoleEntity roleAdmin = RoleEntity.builder()
+                    .roleEnum(RoleEnum.ADMIN)
+                    .permissionList(Set.of(createPermission, readPermission, updatePermission, deletePermission))
+                    .build();
 
-			RoleEntity roleDeveloper = RoleEntity.builder()
-			.roleEnum(RoleEnum.DEVELOPER)
-			.permissionList(Set.of(createPermission, readPermission, updatePermission, refactorPermission))
-			.build();
+            RoleEntity roleUser = RoleEntity.builder()
+                    .roleEnum(RoleEnum.USER)
+                    .permissionList(Set.of(createPermission, readPermission))
+                    .build();
 
-			RoleEntity roleInvited = RoleEntity.builder()
-			.roleEnum(RoleEnum.INVITED)
-			.permissionList(Set.of(readPermission))
-			.build();
+            RoleEntity roleInvited = RoleEntity.builder()
+                    .roleEnum(RoleEnum.INVITED)
+                    .permissionList(Set.of(readPermission))
+                    .build();
 
-			/* CREATE USERS */
-			UserEntity userUser = UserEntity.builder()
-			.username("user")
-			.password("password")
-			.isEnabled(true)
-			.accountNoExpired(true)
-			.accountNoLocked(true)
-			.roles(Set.of(roleUser))
-			.build();
+            RoleEntity roleDeveloper = RoleEntity.builder()
+                    .roleEnum(RoleEnum.DEVELOPER)
+                    .permissionList(Set.of(createPermission, readPermission, updatePermission, deletePermission, refactorPermission))
+                    .build();
 
-			UserEntity userAdmin = UserEntity.builder()
-			.username("admin")
-			.password("password")
-			.isEnabled(true)
-			.accountNoExpired(true)
-			.accountNoLocked(true)
-			.roles(Set.of(roleAdmin))
-			.build();
+            /* CREATE USERS */
+            UserEntity userAdmin = UserEntity.builder()
+                    .username("admin")
+                    .password("password")
+                    .isEnabled(true)
+                    .accountNoExpired(true)
+                    .accountNoLocked(true)
+                    .credentialNoExpired(true)
+                    .roles(Set.of(roleAdmin))
+                    .build();
 
-			UserEntity userDeveloper = UserEntity.builder()
-			.username("developer")
-			.password("password")
-			.isEnabled(true)
-			.accountNoExpired(true)
-			.accountNoLocked(true)
-			.roles(Set.of(roleDeveloper))
-			.build();
+            UserEntity userUser = UserEntity.builder()
+                    .username("user")
+                    .password("password")
+                    .isEnabled(true)
+                    .accountNoExpired(true)
+                    .accountNoLocked(true)
+                    .credentialNoExpired(true)
+                    .roles(Set.of(roleUser))
+                    .build();
 
-			repositoryUser.saveAll(List.of(userDeveloper, userAdmin, userUser));
-		};
+            UserEntity userInvited = UserEntity.builder()
+                    .username("invited")
+                    .password("password")
+                    .isEnabled(true)
+                    .accountNoExpired(true)
+                    .accountNoLocked(true)
+                    .credentialNoExpired(true)
+                    .roles(Set.of(roleInvited))
+                    .build();
+
+            UserEntity userDeveloper = UserEntity.builder()
+                    .username("developer")
+                    .password("password")
+                    .isEnabled(true)
+                    .accountNoExpired(true)
+                    .accountNoLocked(true)
+                    .credentialNoExpired(true)
+                    .roles(Set.of(roleDeveloper))
+                    .build();
+
+					repositoryUser.saveAll(List.of(userDeveloper,userUser,userAdmin,userInvited));
+        };
 	}
 }
