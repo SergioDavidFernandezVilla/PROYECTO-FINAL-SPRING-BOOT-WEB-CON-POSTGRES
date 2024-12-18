@@ -54,14 +54,6 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
 
-                
-                    // RUTA CRUD USER
-                    
-                    // RUTA CREAR ANUNCIO
-                    http.requestMatchers(HttpMethod.GET, "/new").hasAnyAuthority("ADMIN", "USER");
-                    http.requestMatchers(HttpMethod.POST, "/new").hasAnyAuthority("ADMIN", "USER");
-                    
-
                     // RUTA INICIO
                     http.requestMatchers(HttpMethod.GET, "/").hasAnyRole("ADMIN", "DEVELOPER", "USER");
 
