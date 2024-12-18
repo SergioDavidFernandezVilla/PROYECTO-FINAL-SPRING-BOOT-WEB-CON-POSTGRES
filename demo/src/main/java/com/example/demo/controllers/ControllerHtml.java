@@ -25,7 +25,7 @@ public class ControllerHtml {
     private RepositoryAnuncio anuncioRepository;
 
     @GetMapping("/")
-    @PreAuthorize("permitAll()")
+    @PreAuthorize("hasAuthority('READ')")
     public String welcomePage(Model model){
         List<Anuncio> anuncios = anuncioRepository.findAll();
         model.addAttribute("anuncios", anuncios); // Atributo correcto
@@ -34,7 +34,7 @@ public class ControllerHtml {
     }
 
     @GetMapping("/new")
-    @PreAuthorize("permitAll()")
+    @PreAuthorize("hasR")
     public String createAnuncioForm(Model model) {
         model.addAttribute("anuncio", new Anuncio());
         return "nuevo-anuncio";
