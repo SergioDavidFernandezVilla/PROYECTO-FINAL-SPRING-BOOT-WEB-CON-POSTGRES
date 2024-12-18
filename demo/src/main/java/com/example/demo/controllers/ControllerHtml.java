@@ -34,7 +34,7 @@ public class ControllerHtml {
     }
 
     @GetMapping("/new")
-    @PreAuthorize("hasR")
+    @PreAuthorize("hasAuthority('READ')")
     public String createAnuncioForm(Model model) {
         model.addAttribute("anuncio", new Anuncio());
         return "nuevo-anuncio";
