@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.models.User;
+import com.example.demo.models.UserEntity;
 import com.example.demo.repository.RepositoryUser;
 
 @Service
@@ -15,12 +15,12 @@ public class ServicesUser {
     private RepositoryUser repositoryUser;
 
     // METODO CREATE
-    public User CreateUser(User user) {
+    public UserEntity CreateUser(UserEntity user) {
         return repositoryUser.save(user);
     }
 
     // METODO GET LIST
-    public List<User> GetListUsers() {
+    public List<UserEntity> GetListUsers() {
         return repositoryUser.findAll();
     }
 
@@ -30,9 +30,9 @@ public class ServicesUser {
     }
 
     // METODO ACTULIZAR POR ID
-    public User UpdateUserById(Long id, User user) {
+    public UserEntity UpdateUserById(Long id, UserEntity user) {
         // Verificar si el usuario existe en la base de datos
-        User userExistente = repositoryUser.findById(id).get();
+        UserEntity userExistente = repositoryUser.findById(id).get();
         if (userExistente == null) {
             return null;
         }
@@ -42,12 +42,12 @@ public class ServicesUser {
         }
 
     // METODO GET POR ID
-    public User GetUserById(Long id){
+    public UserEntity GetUserById(Long id){
         return repositoryUser.findById(id).get();
     }
 
     // METODO GET POR EMAIL
-    public User GetUserByEmail(String email){
+    public UserEntity GetUserByEmail(String email){
         return repositoryUser.findByEmail(email);
     }
 
