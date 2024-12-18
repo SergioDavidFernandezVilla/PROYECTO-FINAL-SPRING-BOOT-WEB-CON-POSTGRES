@@ -69,7 +69,7 @@ public class DemoApplication {
             /* CREATE USERS */
             UserEntity userAdmin = UserEntity.builder()
                     .username("admin")
-                    .password("password")
+                    .password("$2b$12$7DTEa.8zJHfRq0crL3D1seTQYLMrrBmRw40LxTUUJrcOuP6UaOedu")
                     .isEnabled(true)
                     .accountNoExpired(true)
                     .accountNoLocked(true)
@@ -79,7 +79,7 @@ public class DemoApplication {
 
             UserEntity userUser = UserEntity.builder()
                     .username("user")
-                    .password("password")
+                    .password("$2b$12$7DTEa.8zJHfRq0crL3D1seTQYLMrrBmRw40LxTUUJrcOuP6UaOedu")
                     .isEnabled(true)
                     .accountNoExpired(true)
                     .accountNoLocked(true)
@@ -89,7 +89,7 @@ public class DemoApplication {
 
             UserEntity userInvited = UserEntity.builder()
                     .username("invited")
-                    .password("password")
+                    .password("$2b$12$7DTEa.8zJHfRq0crL3D1seTQYLMrrBmRw40LxTUUJrcOuP6UaOedu")
                     .isEnabled(true)
                     .accountNoExpired(true)
                     .accountNoLocked(true)
@@ -99,7 +99,7 @@ public class DemoApplication {
 
             UserEntity userDeveloper = UserEntity.builder()
                     .username("developer")
-                    .password("password")
+                    .password("$2b$12$7DTEa.8zJHfRq0crL3D1seTQYLMrrBmRw40LxTUUJrcOuP6UaOedu")
                     .isEnabled(true)
                     .accountNoExpired(true)
                     .accountNoLocked(true)
