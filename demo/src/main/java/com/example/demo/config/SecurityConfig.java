@@ -61,6 +61,14 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
 
+                    http.requestMatchers("/auth").permitAll();
+
+                    http.requestMatchers(HttpMethod.POST, "/user").hasAnyRole("ADMIN", "DEVELOPER");
+                    http.requestMatchers(HttpMethod.GET, "/user").hasAnyRole("ADMIN", "DEVELOPER");
+                    http.requestMatchers(HttpMethod.GET, "/").hasAnyRole("ADMIN", "DEVELOPER", "USER");
+                    http.requestMatchers(HttpMethod.POST, "/auth/post").hasAnyRole("ADMIN", "DEVELOPER");
+                    http.requestMatchers(HttpMethod.PATCH, "/auth/patch").hasAnyAuthority("REFACTOR");
+
                      // CONFIGURAR EL RESTO ENDPOINTS POR DEFECTO
                     http.anyRequest().denyAll();
                 }).formLogin(Customizer.withDefaults())
