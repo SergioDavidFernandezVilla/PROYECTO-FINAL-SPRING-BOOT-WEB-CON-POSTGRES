@@ -57,6 +57,15 @@ public class SecurityConfig {
                     // RUTA INICIO
                     http.requestMatchers(HttpMethod.GET, "/").hasAnyRole("ADMIN", "DEVELOPER", "USER");
 
+                    // RUTA ANUNCIO
+                    http.requestMatchers(HttpMethod.GET, "/anuncio").hasAnyRole("ADMIN", "DEVELOPER", "USER");
+                    http.requestMatchers(HttpMethod.POST, "/anuncio").hasAnyRole("ADMIN", "DEVELOPER");
+
+                    http.requestMatchers(HttpMethod.GET, "/new").hasAnyRole("ADMIN", "DEVELOPER", "USER");
+                    http.requestMatchers(HttpMethod.POST, "/new").hasAnyRole("ADMIN", "DEVELOPER");
+
+                    http.requestMatchers(HttpMethod.GET, "/insert").hasAnyRole("ADMIN", "DEVELOPER", "USER");
+
                     // RUTA COMPROBAR ALGUNAS IDEAS...
                     http.requestMatchers(HttpMethod.POST, "/auth/post").hasAnyRole("ADMIN", "DEVELOPER");
                     http.requestMatchers(HttpMethod.PATCH, "/auth/patch").hasAnyAuthority("REFACTOR");

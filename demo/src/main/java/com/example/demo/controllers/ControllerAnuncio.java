@@ -26,7 +26,7 @@ public class ControllerAnuncio {
     private ServicesAnuncio servicesAnuncio;
 
     // METODO CREATE 
-    @PreAuthorize("hasAuthority('CREATE')")
+   
     @PostMapping
     public ResponseEntity<Anuncio> createAnuncio(@RequestBody Anuncio anuncio){
         Anuncio createdAnuncio = servicesAnuncio.CreateAnuncio(anuncio);
@@ -35,27 +35,27 @@ public class ControllerAnuncio {
 
     // METODO ANUNCIOS LIST
     @GetMapping
-    @PreAuthorize("hasAuthority('READ')")
+    
     public List<Anuncio> GetListAnuncios(){
         return servicesAnuncio.GetListAnuncios();
     }
 
     // METODO DELETE
-    @PreAuthorize("hasAuthority('DELETE')")
+   
     @DeleteMapping
     public void DeleteAnuncio(@PathVariable Long id){
         servicesAnuncio.DeleteAnuncio(id);
     }
 
     // METODO ACTULIZAR POR ID
-    @PreAuthorize("hasAuthority('UPDATE')")
+    
     @PutMapping("/{id}")
     public Anuncio UpdateAnuncioById(@PathVariable Long id, @RequestBody Anuncio anuncio){
         return servicesAnuncio.UpdateAnuncioById(id, anuncio);
     }
 
     // METODO GET POR ID
-    @PreAuthorize("hasAuthority('READ')")
+    
     @GetMapping("/{id}")
     public Anuncio GetAnuncioById(@PathVariable Long id){
         return servicesAnuncio.GetAnuncioById(id);

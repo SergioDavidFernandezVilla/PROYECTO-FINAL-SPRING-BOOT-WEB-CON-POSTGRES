@@ -25,7 +25,7 @@ public class ControllerHtml {
     private RepositoryAnuncio anuncioRepository;
 
     @GetMapping("/")
-    @PreAuthorize("hasAuthority('READ')")
+   
     public String welcomePage(Model model){
         List<Anuncio> anuncios = anuncioRepository.findAll();
         model.addAttribute("anuncios", anuncios); // Atributo correcto
@@ -34,14 +34,14 @@ public class ControllerHtml {
     }
 
     @GetMapping("/new")
-    @PreAuthorize("hasAuthority('READ')")
+    
     public String createAnuncioForm(Model model) {
         model.addAttribute("anuncio", new Anuncio());
         return "nuevo-anuncio";
     }
 
     @PostMapping("/new")
-    @PreAuthorize("hasAuthority('CREATE')")
+   
     public String createAnuncio(@ModelAttribute("anuncio") Anuncio anuncio) {
         servicesAnuncio.CreateAnuncio(anuncio); // Guarda los datos
         return "redirect:/insert"; // Redirige a una página de éxito
@@ -49,7 +49,7 @@ public class ControllerHtml {
 
 
     @GetMapping("/insert")
-    @PreAuthorize("permitAll()")
+    
     public String InsertMessage(Model model){
         return "insert-message-sucess";
     }
